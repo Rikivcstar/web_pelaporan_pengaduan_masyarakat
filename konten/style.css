@@ -1,0 +1,24 @@
+ nav  {
+     /* background-color:white;
+     color: black; */
+     font-family: 'Viga', sans-serif;
+
+ }
+.container h2{
+    font-family: 'Viga', sans-serif;
+    font-size: 30px;
+    text-shadow: 3px 1px 2px rgba(0, 0, 0, .6);
+}
+span{
+    font-size: 17px;
+    font-weight: bold;
+}
+section .jumbotron{
+    padding: 10rem 5rem;
+    background-image: url(img/masyarakat.jpg);
+    height: 100vh;
+    color: white;
+}
+.jumbotron p{
+    font-weight: 400;
+}
