@@ -4,180 +4,233 @@ if (isset($_SERVER["nik"])) {
     header("Location:masyarakat.php");
     exit;
 }
+
 require 'fungsiindex.php';
+if(isset($_POST["kirim"]))
+{
+  if(contact($_POST) > 0 )
+  {
+    echo "<script>
+          alert('Permintaan Pesan Berhasil Dikirim')
+          document.href.location = 'index.php';
+        </script>";
+  }else {
 
-    if(isset($_POST["kirim"])){
-
-        if(contact($_POST) > 0){
-            echo "<script>
-                        alert('Pengiriman Berhasil Dilakukan')
-                        document.location.href='index.php';
-                    </script>";
-        }else {
-            echo "<script>
-                        alert('Pengiriman Gagal Dilakukan')
-                        document.location.href='index.php';
-                    </script>";
-        }
-    }
-
-
+    echo "<script>
+          alert('Permintaan Pesan Berhasil Dikirim')
+          document.href.location = 'index.php';
+        </script>";
+  }
+}
 
 ?>
 
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- my Css -->
-    <link rel="stylesheet" href="style.css">
-    <!--my font  -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <title>Halaman Utama</title>
-    <style>
-        .jumbotron {
-            background-image: url(img/utama.jpg);
-            height: 100vh;
-            background-size: cover;
-            padding: 3rem 6rem;
-        }
-
-        /* nav {
-            background-color: white;
-        } */
-    </style>
-</head>
-
-<body id="home">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <!-- link My css -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- link icons bootstrap 5 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
+    <!-- link google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;600&display=swap" rel="stylesheet" />
+    <title>Web Pengaduan Masyarakat</title>
+  </head>
+  <body id="home">
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
-        <div class="container">
-            <h2 class="navbar-brand" style="color: white; text-shadow: 2px 2px 1px rgba(0, 0, 0, .9);">Ryansyah</h2>
-            <button class="navbar-toggler text-dark" type="button " data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="color: black;">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto" style="color: white; text-shadow: 2px 2px 1px rgba(0, 0, 0, .8);">
-                    <li class=" nav-item me-5">
-                        <a class="nav-link active" style="color: white; font-weight: 300;" aria-current="page" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item me-5">
-                        <a class="nav-link " style="color: white; font-weight: 300" href="#about">About</a>
-                    </li>
-                    <li class="nav-item me-5">
-                        <a href="#gallery" style="color: white; " class="nav-link">Gallery</a>
-                    </li>
-                    
-                    <li class="nav-item me-5">
-                        <a class="nav-link " style="color: white; font-weight: 300" href="#contact">Contact</a>
-                    </li>
-                    <li class="nav-item me-5">
-                        <a class=" nav-link text-white btn btn-primary" href="register.php">Sign Up</a>
-                    </li>
-                </ul>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark  fixed-top">
+      <div class="container">
+        <a class="navbar-brand text-white fw-bold" href="#"><h2>PPM</h2></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gallery">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            <a href="register.php" class="btn btn-khusus">Sign In <i class="bi bi-arrow-right-circle ms-1 fw-bold"></i></a>
+          </ul>
         </div>
+      </div>
     </nav>
-    <!-- akhir navbar -->
-    <!-- jumbotron -->
-    <section class="jumbotron text-center">
-        <h1 style=" font-family: 'Source Sans Pro', sans-serif; font-size: 40px; margin-top: 100px; text-shadow: 2px 1px 1px rgba(0, 0, 0, .9); color: white; margin-top: 200px;">Selamat Datang Di Website <br> Layanan Pelaporan Pengaduan Masyarakat </h1>
-        <p class="lead " style="font-size: 
-            18px;text-shadow: 2px 1px 1px rgba(0, 0, 0, .9); color: white;">Silahkan <span> Login </span> Bagi Yg Sudah Mempunyai Akun</p>
-        <hr style="width: 400px; border: 3px solid black; margin: 15px auto
-            ;">
-        <a href="login.php" class="btn btn-success text-white me-3" style="width: 100px;">LOGIN </a>
-
-    </section>
-    <!-- akhir jumbotrzon -->
-    <!-- About -->
-    <section id="about" class="p-5">
-        <div class="container">
-            <div class="row text-center" style="margin-top: 40px;">
-                <div class="col-md-12">
-                    <h3 style="font-family: 'Viga', sans-serif; font-size: 30px; text-shadow: 2px 2px 2px rgba(0, 0, 0, .8); color: black;">About Me</h3>
-                </div>
-            </div>
-            <div class="row mt-4 text-center">
-                <div class="col-md-12">
-                    <p style="font-weight: 400;">Heeloo, Walcome too <span style="font-weight: bold;"> " WEBSITE PELAPORAN PENGADUAN MASYARAKAT " </span> Di web ini kami ingin memberikan pelayanan kepada masyarakat terkait pengaduan yg ingin masyarakat inginkan kepada kami sebagai pemerintahan, Kami siap membantu selama <span style="font-weight: bold;">24 jam </span> kepada masyarakat, Berikan laporan anda kepada kami,<span> TERIMAKASIH TELAH BERKUNJUNG KE WEBSITE RESMI DARI KAMI.</span> </p>
-
-                </div>
-            
+    <!-- end navbar -->
+    <!-- start Hero  -->
+    <section id="hero">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <h2>
+              Selamat Datang <br />
+              Di Website <br />
+              <span class="beda">Pelaporan pengaduan Masyarakat</span>
+            </h2>
+            <p>Website yg menyediakan layanan Kepada masyarakat untuk melakukan pengaduan, Silahkan berikan pengaduan anda kepada kami.</p>
+            <a href="login.php" class="btn btn-khusus" style="margin-left: -1px">LOGIN<i class="bi bi-arrow-right-circle ms-2 fw-bold"></i></a>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <img src="img/Group 1.png" class="img-fluid mt-5 ms-2 rounded-circle" style="border: 1px solid #252734; background-color: #252734" width="600" alt="" />
+          </div>
         </div>
+      </div>
     </section>
-    <!-- akhir About -->
-    <!-- gallery Pelaporan pengaduan masyarakat -->
-    <section id="gallery" class="gallery">
-        <div class="container">
-            <div class="row text-center">
-                <h3 style="font-family: 'Viga', sans-serif; font-size: 30px; text-shadow: 2px 2px 2px rgba(0, 0, 0, .8); color: black;">Gallery</h3>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    
-                </div>
-            </div>
+    <!-- end hero -->
+    <!-- start about -->
+    <section id="about">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-md-12">
+            <h2 class="text-white fw-bold mb-4">About Us</h2>
+            <hr class="color-acsen" />
+          </div>
         </div>
-    </section>
-    <!-- akhir gellery -->
-    <!-- awal contact form -->
-    <section id="contact" class="p-5 mt-5">
-        <div class="container ">
-            <div class="row text-center" style="margin-top: 40px;">
-                <div class="col-md">
-                    <h3 class="mb-5" style="font-family: 'Viga', sans-serif; font-size: 30px; text-shadow: 2px 2px 2px rgba(0, 0, 0, .8); color: white;">Contact Me</h3>
-                </div>
-            </div>
-            <div class="row  justify-content-center">
-                <div class="col-md-7 ">
-                    <form action="" method="post" class="form ">
-                        <div class="form-group">
-                            <label for="" style="font-weight: bold;">USERNAME :</label>
-                            <input type="text" name="username" class="form-control">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="" style="font-weight: bold;">EMAIL :</label>
-                            <input type="email" name="email" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="" style="font-weight: bold;">CONTACT :</label>
-                            <textarea name="contact" id="contact" cols="30" rows = "5" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="" style="font-weight: bold;">NO.TELEPON :</label>
-                            <input type="text" name="telp" class="form-control">
-                        </div>
-                        <button type="submit" name="kirim" class="btn btn-primary">KIRIM</button>
-                    </form>
-
-                </div>
-            </div>
+        <div class="row justify-content-center text-center">
+          <div class="col-md-12">
+            <p style="font-size: 18px; font-weight: 300; margin-top: 50px">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus autem, sit tenetur recusandae officiis excepturi maxime ea maiores minima nihil sint molestiae veritatis quidem cumque libero neque porro unde. Blanditiis,
+              in? Id unde delectus facilis dolores iste ab odio et?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi saepe libero voluptatem itaque iste, nam possimus nesciunt aut est beatae voluptas ullam cumque
+              rerum hic eaque tenetur. Minus, ipsam.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
-    <!-- akhir kontak form -->
-    <!-- footer -->
-    <footer class="text-white text-center" style="line-height: 50px; background-image: linear-gradient(230deg, #E60497, #E61204, #9305B9); height: 50px; font-size: 15px; margin-top: 50px;">
-        <p>Created With <i class="bi bi-heart-half text-dark"></i> By <a href="#" class="text-white fw-bold">Ryansyah3r</a> </p>
+    <!-- end about -->
+    <!-- start galery -->
+    <section id="gallery">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-12">
+            <h2 class="text-white fw-bold mb-4">Gallery</h2>
+            <hr class="color-acsen" />
+          </div>
+        </div>
+        <div class="row mt-5 text-center">
+          <div class="col-md-3">
+            <img src="img/christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg" alt="image1" class="img-fluid" />
+          </div>
+          <div class="col-md-3">
+            <img src="img/dylan-gillis-KdeqA3aTnBY-unsplash.jpg" alt="image1" class="img-fluid" />
+          </div>
+          <div class="col-md-3">
+            <img src="img/hannah-busing-Zyx1bK9mqmA-unsplash.jpg" alt="image1" class="img-fluid" />
+          </div>
+          <div class="col-md-3">
+            <img src="img/kylie-lugo-t0BavJY0M-U-unsplash.jpg" alt="image1" class="img-fluid" />
+          </div>
+          <div class="col-md-3">
+            <img src="img/omar-lopez-1qfy-jDc_jo-unsplash.jpg" alt="image1" class="img-fluid" />
+          </div>
+          <div class="col-md-3">
+            <img src="img/tezos-3-88RFifBno-unsplash.jpg" alt="image1" class="img-fluid" />
+          </div>
+          <div class="col-md-3">
+            <img src="img/tezos-BlKBaiFdNgA-unsplash.jpg" alt="" class="img-fluid" />
+          </div>
+          <div class="col-md-3">
+            <img src="img/vonecia-carswell-0aMMMUjiiEQ-unsplash.jpg" alt="" class="img-fluid mb-5" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end galery -->
+    <!-- start contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h2 class="text-white fw-bold mt-5 mb-3">Contact Us</h2>
+            <hr class="color-acsen mt-5 mb-5" />
+          </div>
+        </div>
+        <div class="row mt-5 justify-content-center">
+          <div class="col-md-4 text-center">
+            <div class="card" style="width: 88%; background-color: #ff9100; margin-left: 30px">
+              <div class="card-body">
+                <i class="bi bi-envelope-fill" style="color: #fff; font-size: 60px"></i>
+                <h5 class="card-title">Contact Us</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti debitis amet possimus consectetur explicabo</p>
+              </div>
+            </div>
+            <ul class="list-group" style="width: 100%; margin-top: 30px; margin-left: -25px">
+              <li class="list-group-item" style="font-size: 30px; font-weight: 600">Our Office</li>
+              <li class="list-group-item">Riki Reza Ryansyah</li>
+              <li class="list-group-item">Kp. Setu Kec. Bojonggede, Kel. bojonggede, Kab. Bogor</li>
+            </ul>
+          </div>
+          <div class="col-md-8">
+            <form action="" method="POST" class="mt-4 ms-5">
+              <div class="mb-3">
+                <label for="email" class="form-label">Your Email</label>
+                <input type="email" class="form-control bg-transparent text-white" id="email" name="email" placeholder="Masukan email anda" />
+              </div>
+              <div class="mb-3">
+                <label for="nama" class="form-label">Nama Lengkap</label>
+                <input type="text" class="form-control bg-transparent text-white" id="nama" name="username" placeholder="Masukan nama anda" />
+              </div>
+              <div class="mb-3">
+                <label for="number" class="form-label"> Number Phone</label>
+                <input type="number" class="form-control bg-transparent text-white" id="number" name="telp" placeholder="Masukan Nomor handphone  anda" />
+              </div>
+              <div class="mb-3">
+                <label for="pesan" class="form-label">Pesan</label>
+                <textarea class="form-control bg-transparent text-white" id="pesan" name="contact" rows="3"></textarea>
+              </div>
+              <button type="submit" name="kirim" class="btn btn-warning text-white fw-bold">Kirim</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#252734"
+          fill-opacity="1"
+          d="M0,96L48,112C96,128,192,160,288,192C384,224,480,256,576,229.3C672,203,768,117,864,106.7C960,96,1056,160,1152,181.3C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        ></path>
+      </svg>
+    </section>
+    <!-- end contact -->
+    <!-- start footer -->
+    <footer id="footer">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <img src="img/indo.png" alt="indonesia" class="img-fluid my-3" width="60" />
+          <p class="text-white">Copyright <i class="bi bi-suit-heart-fill text-danger"></i> 2021 By Riki Reza</p>
+          <a href="https://www.instagram.com/_rikyreza/" style="color: #fff"> <i class="bi bi-instagram me-1" style="font-size: 25px"></i></a>
+          <a href="https://github.com/rikivcstar/" style="color: #fff"> <i class="bi bi-github me-1" style="font-size: 25px"></i> </a>
+          <a href="https://www.youtube.com/channel/UCJPEGRSqEog52z-aQYeIbsA/" style="color: #fff"> <i class="bi bi-youtube me-1" style="font-size: 25px"></i></a><br />
+        </div>
+      </div>
     </footer>
-    <!-- akhir footer -->
+    <!-- end footer -->
 
+    <!-- Optional JavaScript; choose one of the two! -->
 
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
-</body>
-
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
 </html>
