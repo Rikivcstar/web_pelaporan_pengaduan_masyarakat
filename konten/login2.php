@@ -33,10 +33,7 @@ if (isset($_POST["login"])) {
             }
         }
     }else {
-       echo "<script>
-                alert('maaf, Login Anda Gagal, Username Dan Password Anda Mungkin Tidak Sesuai');
-                document.location.href='login2.php';
-                </script>";
+      $pesan = true;
     }
 }
 ?>
@@ -70,9 +67,9 @@ if (isset($_POST["login"])) {
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
-            <div class="col-xl-6 col-lg-12 col-md-9">
+            <div class="col-xl-6 col-lg-12 col-md-9 ">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card o-hidden border-0 shadow-lg  ">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
          <div class="row">
@@ -80,9 +77,13 @@ if (isset($_POST["login"])) {
                 <div class="col-lg-12">
                      <div class="p-5">
                         <div class="text-center">
-                         <h1 class="h4 text-gray-900 mb-5" style="font-weight: 700; font-size: 30px; text-shadow: 2px 1px 1px rgba(0,0,0.8);">LOGIN <br> ADMIN & PETUGAS</h1>
+                         <h1 class="h4 text-gray-900 mb-5" style="font-weight: 700; font-size: 30px; text-shadow: 0px 0px 1px rgba(0,0,0.8);">LOGIN <br> ADMIN & PETUGAS</h1>
                            </div>
+
                           <form class="user" action="" method="post">
+                              <?php if(isset($pesan)) : ?>
+                                <p style="color: red; font-style: italic;" class="alert alert-danger">Username atau password Yang anda masukan salah</p>
+                             <?php endif; ?>
                             <div class="form-group">
                             <input type="text" name="username" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter your UserName">
                             </div>

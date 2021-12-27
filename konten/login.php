@@ -61,7 +61,7 @@ if (isset($_POST["login"])) {
 
       <div class="col-xl-6 col-lg-12 col-md-9">
 
-        <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card o-hidden border-0 shadow-lg ">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
@@ -69,7 +69,7 @@ if (isset($_POST["login"])) {
               <div class="col-lg-12">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-5" style="font-weight: 700; font-size: 30px; text-shadow: 2px 1px 1px rgba(0,0,0.8);">LOGIN <br> MASYARAKAT</h1>
+                    <h1 class="h4 text-gray-900 mb-5" style="font-weight: 700; font-size: 30px; text-shadow: 0px 0px 1px rgba(0,0,0.8);">LOGIN <br> MASYARAKAT</h1>
                   </div>
                   <form class="user" action="" method="post">
                     <?php if (isset($pesan)) : ?>

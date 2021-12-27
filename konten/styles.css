@@ -1,0 +1,127 @@
+:root {
+  --mainColor: #252734;
+  --secondaryColor: #333646;
+  --acsenColor: #ff9100;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--mainColor);
+}
+/* start navbar */
+nav h2 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 15px;
+  color: var(--acsenColor) !important;
+}
+ul li {
+  margin-left: 50px;
+}
+ul li a {
+  font-weight: 300;
+}
+.nav-link.active {
+  color: var(--acsenColor) !important;
+  font-weight: 600;
+}
+.btn-khusus {
+  background-color: var(--acsenColor);
+  color: #fff;
+  font-weight: bold;
+  min-width: 100px;
+  height: 40px;
+  font-size: 1rem;
+  margin-left: 50px;
+}
+.btn-khusus:hover {
+  box-shadow: 1px 1px 3px rgba(255, 166, 0, 0.8);
+}
+
+/* end navbabr */
+
+/* start hero */
+#hero {
+  min-height: 70vh;
+  background-color: var(--mainColor);
+  width: 100%;
+  color: #fff;
+}
+
+#hero h2 {
+  margin-top: 100px;
+  margin-bottom: 10px;
+}
+#hero .beda {
+  color: var(--acsenColor);
+  font-weight: 600;
+}
+#hero p {
+  font-weight: 300;
+  font-size: 18px;
+}
+/* end hero */
+/* start about */
+#about {
+  min-height: 70vh;
+  margin-top: 70px;
+  background-color: var(--secondaryColor);
+  color: #fff;
+}
+#about .color-acsen {
+  width: 30%;
+  color: var(--acsenColor);
+  opacity: 100%;
+  height: 2px;
+  margin: 0 auto;
+}
+#about h2 {
+  margin-top: 70px;
+}
+/* end about */
+/* start galery */
+#gallery {
+  margin-top: 100px;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--mainColor);
+  color: #fff;
+}
+#gallery .color-acsen {
+  width: 30%;
+  color: var(--acsenColor);
+  opacity: 100%;
+  height: 2px;
+  margin: 0 auto;
+}
+#gallery img {
+  width: 300px;
+  margin-top: 20px;
+  border: 3px solid white;
+  border-radius: 10px;
+}
+/* end galery */
+/* start contact */
+#contact {
+  background-color: var(--secondaryColor);
+  min-height: 100vh;
+  color: #fff;
+}
+#contact .color-acsen {
+  width: 30%;
+  color: var(--acsenColor);
+  opacity: 100%;
+  height: 2px;
+  margin: 0 auto;
+}
+#contact form {
+  width: 70%;
+  color: white;
+}
+/* end contact */
+/* footer */
+footer {
+  padding: 100px 0;
+}
